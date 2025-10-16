@@ -1,0 +1,55 @@
+[server]
+host = "0.0.0.0"
+port = 5055
+
+[cors]
+enabled = true
+allow_origins = ["*"]
+
+[logging]
+level = "debug" 
+
+[solana]
+# Production environment Solana configuration
+rpc_url = "https://devnet.helius-rpc.com/?api-key=666f279b-0b08-41cd-97f4-461811d7fc7a"
+ws_url = "wss://devnet.helius-rpc.com/?api-key=666f279b-0b08-41cd-97f4-461811d7fc7a"
+# Please replace with the actual Spin Pet program ID
+program_id = "JBMmrp6jhksqnxDBskkmVvWHhJLaPBjgiMHEroJbUTBZ"
+# Event listener configuration
+enable_event_listener = true
+commitment = "confirmed"  # processed/confirmed/finalized
+reconnect_interval = 5  # Reconnect interval in seconds
+max_reconnect_attempts = 10
+# Event processing configuration
+event_buffer_size = 1000
+event_batch_size = 100
+# WebSocket ping interval in seconds (default: 60)
+ping_interval_seconds = 60
+# Whether to process failed transactions for development/testing (default: false)
+# Set to true in development to get more K-line data points
+process_failed_transactions = false
+# Whether to log raw Solana messages to separate file for debugging (default: false)
+enable_raw_message_logging = true
+
+[database]
+rocksdb_path = "./data/devnet_rocksdb" 
+
+[ipfs]
+gateway_url = "https://crimson-binding-tarantula-509.mypinata.cloud/ipfs/"
+request_timeout_seconds = 30
+max_retries = 3
+retry_delay_seconds = 5
+
+[kline]
+# K-line real-time push service configuration
+enable_kline_service = true
+# Connection timeout (seconds)
+connection_timeout_secs = 60
+# Maximum subscriptions per client
+max_subscriptions_per_client = 100
+# Default number of historical data points
+history_data_limit = 100
+# Heartbeat interval (seconds)
+ping_interval_secs = 25
+# Heartbeat timeout (seconds)
+ping_timeout_secs = 60 
